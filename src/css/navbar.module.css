@@ -1,0 +1,19 @@
+aside {
+  grid-area: n;
+  background-color: #edeef0;
+  padding: 15px 0;
+}
+
+aside a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #69A7EA;
+}
+
+aside a:last-child {
+  margin-top: 20px;
+  font-weight: normal;
+}

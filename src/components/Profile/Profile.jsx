@@ -1,5 +1,6 @@
 import React from 'react';
-import cls from '../css/profile.module.css';
+import cls from '../../css/profile.module.css';
+import MyPosts from './myPosts/myPosts';
 
 function Profile() {
   return (
@@ -16,14 +17,8 @@ function Profile() {
           <span>Web:</span><br />
         </div>
       </div>
-      <div className={`${cls.messageBox} ${cls.mainRow}`}>
-        <div className={cls.messageBoxWrap}>
-          <div>New Post</div>
-          <form className={cls.sendMsg}>
-            <textarea name="post_msg"></textarea><br />
-            <button type="submit" name="send_msg">Send</button>
-          </form>
-        </div>
+      <div className={`${cls.myPosts} ${cls.mainRow}`}>
+      <MyPosts />  
       </div>
     </div>
   );

@@ -17,3 +17,7 @@ aside a:last-child {
   margin-top: 20px;
   font-weight: normal;
 }
+
+aside a.active {
+  text-decoration: underline;
+}

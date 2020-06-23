@@ -1,0 +1,45 @@
+.main {
+  display: flex;
+  grid-area: c;
+}
+
+.main .users {
+  border-right: 2px solid #69a7ea;
+  width: 25%;
+  padding: 25px;
+}
+
+.main .from {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.main .from div {
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+}
+
+.main .from div span {
+  line-height: 50px;
+  margin-left: 15px;
+}
+
+.main .messages {
+  width: 70%;
+  padding: 25px;
+}
+
+.main .msgFrom {
+  padding: 10px;
+  background-color: #ffd74a;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.main .msgTo {
+  padding: 10px;
+  background-color: #78d2fa;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}

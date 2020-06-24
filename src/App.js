@@ -13,6 +13,7 @@ function App(props) {
       <div className="wrapper">
         <Header />
         <Navbar />
+          <Route exact path='/' component={Profile} />
           <Route path='/profile' component={Profile} />
           <Route path='/dialogs' component={Dialogs} />
       </div>

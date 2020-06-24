@@ -6,7 +6,7 @@
 .main .users {
   border-right: 2px solid #69a7ea;
   width: 25%;
-  padding: 25px;
+  padding: 25px 0 25px 25px;
 }
 
 .main .from {
@@ -23,6 +23,18 @@
 .main .from div span {
   line-height: 50px;
   margin-left: 15px;
+  color: black;
+}
+
+.main .from a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.main .from a.active {
+  background-color: #69a7ea;
+  border-radius: 25px 0 0 25px;
 }
 
 .main .messages {

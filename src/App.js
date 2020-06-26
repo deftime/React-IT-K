@@ -13,9 +13,9 @@ function App(props) {
       <div className="wrapper">
         <Header />
         <Navbar />
-          <Route exact path='/' component={Profile} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/dialogs' component={Dialogs} />
+          <Route exact path='/' render={ () => <Profile postData={props.data.postData} /> } />
+          <Route path='/profile' render={ () => <Profile postData={props.data.postData} /> } />
+          <Route path='/dialogs' render={ () => <Dialogs dialogData={props.data.dialogData} messageData={props.data.messageData} /> } />
       </div>
     </div>
     </BrowserRouter>

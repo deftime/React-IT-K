@@ -1,17 +1,17 @@
 import React from 'react';
-import cls from '../css/navbar.module.css';
+import cls from '../../css/navbar.module.css';
 import {NavLink} from 'react-router-dom';
 
-function Navbar() {
+function Menu(props) {
   return (
-    <aside>
+    <div className={cls.navBlock}>
       <NavLink to="/profile" activeClassName={cls.active}>Profile</NavLink>
       <NavLink to="/dialogs" activeClassName={cls.active}>Messages</NavLink>
       <a href="/">News</a>
       <a href="/">Music</a>
       <a href="/">Settings</a>
-    </aside>
-  );
+    </div>
+  )
 }
 
-export default Navbar;
+export default Menu;

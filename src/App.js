@@ -13,8 +13,8 @@ function App(props) {
       <div className="wrapper">
         <Header />
         <Navbar navData={props.data.navbar} />
-          <Route exact path='/' render={ () => <Profile pageData={props.data.profilePage} /> } />
-          <Route path='/profile' render={ () => <Profile pageData={props.data.profilePage} /> } />
+          <Route exact path='/' render={ () => <Profile pageData={props.data.profilePage} addPost={props.addPost}/> } />
+          <Route path='/profile' render={ () => <Profile pageData={props.data.profilePage} addPost={props.addPost}/> } />
           <Route path='/dialogs' render={ () => <Dialogs pageData={props.data.messagesPage} /> } />
       </div>
     </div>

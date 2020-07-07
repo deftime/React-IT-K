@@ -79,6 +79,10 @@
   float: right;
 }
 
+.main .myPosts button:active {
+  transform: scale(0.9);
+}
+
 .main .myPosts .messageBoxWrap {
   width: 500px;
   margin: 0 auto 50px auto;

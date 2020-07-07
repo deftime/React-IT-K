@@ -1,12 +1,23 @@
 .main {
   display: flex;
   grid-area: c;
+  height: 800px;
 }
 
 .main .users {
   border-right: 2px solid #69a7ea;
   width: 25%;
   padding: 25px 0 25px 25px;
+}
+
+.main .messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.main .messages .msgList {
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .main .from {
@@ -54,4 +65,34 @@
   background-color: #78d2fa;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+/* Messanger send area */
+
+.sendMessage {
+  border-top: 2px solid #69a7ea;
+  padding-top: 10px;
+}
+
+.sendMessage textarea {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background-color: #E0EFFF;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.sendMessage button {
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #78d2fa;
+  margin-top: 10px;
+}
+
+.sendMessage button:active {
+  transform: scale(0.9);
 }

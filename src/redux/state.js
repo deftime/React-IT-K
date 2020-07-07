@@ -1,3 +1,5 @@
+import {renderDOM} from '../render';
+
 let data = {
   profilePage: {
     postData: [
@@ -16,7 +18,9 @@ let data = {
     ],
     messageData: [
       {id: 1, text: 'Message, that come to me!', line: 'msgFrom'},
-      {id: 2, text: 'And my answer to it!', line: 'msgTo'}
+      {id: 2, text: 'And my answer to it!', line: 'msgTo'},
+      {id: 3, text: 'Good messanger!', line: 'msgFrom'},
+      {id: 4, text: 'Yes!', line: 'msgTo'}
     ]
   },
   navbar: {
@@ -29,6 +33,17 @@ let data = {
       {id: 6, name: 'Konstantin'}
     ]
   }
-}
+};
+
+export function addWallPost(text) {
+  let objProt = {
+    id: data.profilePage.postData.length + 1,
+    message: text,
+    likes: 0
+  }
+
+  data.profilePage.postData.push(objProt);
+  renderDOM(data);
+};
 
 export default data;

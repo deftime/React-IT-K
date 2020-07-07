@@ -4,7 +4,7 @@ import ava from '../../../images/friend.png';
 
 function FriendItem(props) {
   return (
-    <div class={cls.friend}>
+    <div className={cls.friend}>
       <img src={ava} alt="ava" />
       <span>{props.name}</span>
     </div>

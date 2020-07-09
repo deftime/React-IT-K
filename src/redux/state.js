@@ -6,7 +6,8 @@ let data = {
       {id: 1, message: 'Ohh, cool site!', likes: 5 },
       {id: 2, message: 'Testing post! Send this to your wall!', likes: 0 },
       {id: 3, message: 'What are you going to do with your social network??', likes: 2 }
-    ]
+    ],
+    newPostText: 'Enter text here...'
   },
   messagesPage: {
     dialogData: [
@@ -21,7 +22,8 @@ let data = {
       {id: 2, text: 'And my answer to it!', line: 'msgTo'},
       {id: 3, text: 'Good messanger!', line: 'msgFrom'},
       {id: 4, text: 'Yes!', line: 'msgTo'}
-    ]
+    ],
+    newMsgText: 'Enter your message here...'
   },
   navbar: {
     friendList: [
@@ -35,15 +37,38 @@ let data = {
   }
 };
 
-export function addWallPost(text) {
+export function addWallPost() {
   let objProt = {
     id: data.profilePage.postData.length + 1,
-    message: text,
+    message: data.profilePage.newPostText,
     likes: 0
   }
 
   data.profilePage.postData.push(objProt);
+  data.profilePage.newPostText = '';
   renderDOM(data);
 };
+
+export function changePostText(text) {
+  data.profilePage.newPostText = text;
+  renderDOM(data);
+}
+
+export function sendMessage() {
+  let objProt = {
+    id: data.messagesPage.messageData.length + 1,
+    text: data.messagesPage.newMsgText,
+    line: 'msgTo'
+  }
+
+  data.messagesPage.messageData.push(objProt);
+  data.messagesPage.newMsgText = '';
+  renderDOM(data);
+}
+
+export function changeMsgText(text) {
+  data.messagesPage.newMsgText = text;
+  renderDOM(data);
+}
 
 export default data;

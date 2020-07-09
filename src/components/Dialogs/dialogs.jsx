@@ -12,6 +12,15 @@ function Dialogs(props) {
     event.preventDefault();
   }
 
+  function eraseField() {
+    msgText.current.value = '';
+  }
+
+  let msgText = React.createRef();
+  function editMsgField() {
+    props.changeMsgText(msgText.current.value);
+  }
+
   return (
     <div className={cls.main}>
       <div className={cls.users}>
@@ -23,8 +32,8 @@ function Dialogs(props) {
         </div>
         <div className={cls.sendMessage}>
           <form name="sendMsgFrom" onSubmit={stopRefresh}>
-            <textarea name="msgText"></textarea><br />
-            <button type="submit" name="sendButton">Send</button>
+            <textarea name="msgText" value={props.pageData.newMsgText} ref={msgText} onFocus={eraseField} onChange={editMsgField}></textarea><br />
+            <button type="submit" name="sendButton" onClick={props.sendMessage}>Send</button>
           </form>
         </div>
       </div>

@@ -4,11 +4,11 @@ import Post from './post';
 
 function MyPosts(props) {
 
-  let posts = props.data.map( post => <Post message={post.message} likes={post.likes} />);
+  let posts = props.postsArr.map( post => <Post message={post.message} likes={post.likes} />);
 
   return (
     <div>
-      <NewPost addWallPost={props.addPost} newPostText={props.newPostText} changePostText={props.changePostText}/>
+      <NewPost newPostText={props.newPostText} dispatch={props.dispatch}/>
       {posts}
     </div>
   )

@@ -13,11 +13,11 @@ function NewPost(props) {
 
   let postText = React.createRef();
   function sendPost() {
-    props.addWallPost();
+    props.dispatch({type: 'ADD_WALL_POST'});
   };
 
   function editPostField() {
-    props.changePostText(postText.current.value);
+    props.dispatch({type: 'CHANGE_POST_TEXT', text: postText.current.value});
   };
 
   return (

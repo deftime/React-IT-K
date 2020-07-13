@@ -8,7 +8,7 @@ function Profile(props) {
     <div className={cls.main}>
       <ProfileInfo />
       <div className={`${cls.myPosts} ${cls.mainRow}`}>
-      <MyPosts data={props.pageData.postData} addPost={props.addPost} newPostText={props.pageData.newPostText} changePostText={props.changePostText}/>
+      <MyPosts postsArr={props.pageData.postData} newPostText={props.pageData.newPostText} dispatch={props.dispatch}/>
       </div>
     </div>
   );

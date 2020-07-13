@@ -18,7 +18,11 @@ function Dialogs(props) {
 
   let msgText = React.createRef();
   function editMsgField() {
-    props.changeMsgText(msgText.current.value);
+    props.dispatch({type: 'CHANGE_MSG_TEXT', text: msgText.current.value});
+  }
+
+  function sendMessage() {
+    props.dispatch({type: 'SEND_MESSAGE'})
   }
 
   return (
@@ -33,7 +37,7 @@ function Dialogs(props) {
         <div className={cls.sendMessage}>
           <form name="sendMsgFrom" onSubmit={stopRefresh}>
             <textarea name="msgText" value={props.pageData.newMsgText} ref={msgText} onFocus={eraseField} onChange={editMsgField}></textarea><br />
-            <button type="submit" name="sendButton" onClick={props.sendMessage}>Send</button>
+            <button type="submit" name="sendButton" onClick={sendMessage}>Send</button>
           </form>
         </div>
       </div>

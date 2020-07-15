@@ -1,3 +1,8 @@
+const ADD_WALL_POST = 'ADD_WALL_POST';
+const CHG_POST_TEXT = 'CHANGE_POST_TEXT';
+const SND_MSG = 'SEND_MESSAGE';
+const CHG_MSG_TEXT = 'CHANGE_MSG_TEXT';
+
 let store = {
   _data: {
     profilePage: {
@@ -71,5 +76,10 @@ let store = {
     }
   }
 }
+
+export let addWallPost = () => ({type: ADD_WALL_POST});
+export let changePostText = (text) => ({type: CHG_POST_TEXT, text: text});
+export let sendMessage = () => ({type: SND_MSG});
+export let changeMsgText = (text) => ({type: CHG_MSG_TEXT, text: text});
 
 export default store;

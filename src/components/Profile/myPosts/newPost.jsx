@@ -1,5 +1,6 @@
 import React from 'react';
 import cls from '../../../css/profile.module.css';
+import {addWallPost, changePostText} from '../../../redux/state';
 
 function NewPost(props) {
 
@@ -13,11 +14,11 @@ function NewPost(props) {
 
   let postText = React.createRef();
   function sendPost() {
-    props.dispatch({type: 'ADD_WALL_POST'});
+    props.dispatch(addWallPost());
   };
 
   function editPostField() {
-    props.dispatch({type: 'CHANGE_POST_TEXT', text: postText.current.value});
+    props.dispatch(changePostText(postText.current.value));
   };
 
   return (

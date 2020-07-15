@@ -2,6 +2,7 @@ import React from 'react';
 import cls from '../../css/dialogs.module.css';
 import DialogItem from './dialogItem';
 import Message from './message';
+import {sendMessage, changeMsgText} from '../../redux/state';
 
 function Dialogs(props) {
 
@@ -18,11 +19,11 @@ function Dialogs(props) {
 
   let msgText = React.createRef();
   function editMsgField() {
-    props.dispatch({type: 'CHANGE_MSG_TEXT', text: msgText.current.value});
+    props.dispatch(changeMsgText(msgText.current.value));
   }
 
-  function sendMessage() {
-    props.dispatch({type: 'SEND_MESSAGE'})
+  function sendMsg() {
+    props.dispatch(sendMessage())
   }
 
   return (
@@ -37,7 +38,7 @@ function Dialogs(props) {
         <div className={cls.sendMessage}>
           <form name="sendMsgFrom" onSubmit={stopRefresh}>
             <textarea name="msgText" value={props.pageData.newMsgText} ref={msgText} onFocus={eraseField} onChange={editMsgField}></textarea><br />
-            <button type="submit" name="sendButton" onClick={sendMessage}>Send</button>
+            <button type="submit" name="sendButton" onClick={sendMsg}>Send</button>
           </form>
         </div>
       </div>

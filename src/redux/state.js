@@ -1,7 +1,5 @@
-const ADD_WALL_POST = 'ADD_WALL_POST';
-const CHG_POST_TEXT = 'CHANGE_POST_TEXT';
-const SND_MSG = 'SEND_MESSAGE';
-const CHG_MSG_TEXT = 'CHANGE_MSG_TEXT';
+import profileReducer from './profileReducer';
+import messagesReducer from './messagesReducer';
 
 let store = {
   _data: {
@@ -49,37 +47,12 @@ let store = {
     this._callSubscriber = observer;
   },
   dispatch(action) {
-    if (action.type === 'ADD_WALL_POST') {
-      let objProt = {
-        id: this._data.profilePage.postData.length + 1,
-        message: this._data.profilePage.newPostText,
-        likes: 0
-      }
-      this._data.profilePage.postData.push(objProt);
-      this._data.profilePage.newPostText = '';
-      this._callSubscriber(this._data);
-    } else if (action.type === 'CHANGE_POST_TEXT') {
-      this._data.profilePage.newPostText = action.text;
-      this._callSubscriber(this._data);
-    } else if (action.type === 'SEND_MESSAGE') {
-      let objProt = {
-        id: this._data.messagesPage.messageData.length + 1,
-        text: this._data.messagesPage.newMsgText,
-        line: 'msgTo'
-      }
-      this._data.messagesPage.messageData.push(objProt);
-      this._data.messagesPage.newMsgText = '';
-      this._callSubscriber(this._data);
-    } else if (action.type === 'CHANGE_MSG_TEXT') {
-      this._data.messagesPage.newMsgText = action.text;
-      this._callSubscriber(this._data);
-    }
+    this._data.profilePage = profileReducer(this._data.profilePage, action);
+    this._data.messagesPage = messagesReducer(this._data.messagesPage, action);
+    this._callSubscriber();
   }
 }
 
-export let addWallPost = () => ({type: ADD_WALL_POST});
-export let changePostText = (text) => ({type: CHG_POST_TEXT, text: text});
-export let sendMessage = () => ({type: SND_MSG});
-export let changeMsgText = (text) => ({type: CHG_MSG_TEXT, text: text});
+
 
 export default store;

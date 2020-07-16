@@ -1,6 +1,6 @@
 import React from 'react';
 import cls from '../../../css/profile.module.css';
-import {addWallPost, changePostText} from '../../../redux/state';
+import {addWallPost, changePostText} from '../../../redux/profileReducer';
 
 function NewPost(props) {
 

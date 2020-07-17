@@ -1,8 +1,8 @@
 import React from 'react';
 import cls from '../../../css/profile.module.css';
-import {addWallPost, changePostText} from '../../../redux/profileReducer';
 
 function NewPost(props) {
+  let postText = React.createRef();
 
   function stopRefresh(event) {
     event.preventDefault();
@@ -12,13 +12,12 @@ function NewPost(props) {
     postText.current.value = '';
   };
 
-  let postText = React.createRef();
   function sendPost() {
-    props.dispatch(addWallPost());
+    props.send();
   };
 
   function editPostField() {
-    props.dispatch(changePostText(postText.current.value));
+    props.changeText(postText.current.value);
   };
 
   return (

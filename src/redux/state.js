@@ -40,10 +40,10 @@ let store = {
   },
   _callSubscriber() {
   },
-  getData() {
+  getState() {
     return this._data;
   },
-  subscriber(observer) {
+  subscribe(observer) {
     this._callSubscriber = observer;
   },
   dispatch(action) {

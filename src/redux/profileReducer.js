@@ -1,7 +1,16 @@
 const ADD_WALL_POST = 'ADD_WALL_POST';
 const CHG_POST_TEXT = 'CHANGE_POST_TEXT';
 
-function profileReducer(partData, action) {
+let defaultData = {
+  postData: [
+    {id: 1, message: 'Ohh, cool site!', likes: 5 },
+    {id: 2, message: 'Testing post! Send this to your wall!', likes: 0 },
+    {id: 3, message: 'What are you going to do with your social network??', likes: 2 }
+  ],
+  newPostText: 'Enter text here...'
+};
+
+function profileReducer(partData = defaultData, action) {
   switch (action.type) {
     case ADD_WALL_POST:
       let objProt = {

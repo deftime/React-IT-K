@@ -1,5 +1,5 @@
 import React from 'react';
-import cls from '../../css/dialogs.module.css';
+import cls from '../../../css/dialogs.module.css';
 
 
 function newMessage(props) {

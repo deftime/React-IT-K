@@ -8,7 +8,7 @@ function MyPosts(props) {
 
   return (
     <div>
-      <NewPostContainer store={props.store}/>
+      <NewPostContainer />
       {posts}
     </div>
   )

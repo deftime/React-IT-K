@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/dialogs';
+import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 function App(props) {
@@ -12,10 +12,10 @@ function App(props) {
     <div className="App">
       <div className="wrapper">
         <Header />
-        <Navbar navData={props.data.navbar} />
-          <Route exact path='/' render={ () => <Profile store={props.store}/> } />
-          <Route path='/profile' render={ () => <Profile store={props.store}/> } />
-          <Route path='/dialogs' render={ () => <Dialogs pageData={props.data.messagesPage} dispatch={props.dispatch}/> } />
+        <Navbar />
+          <Route exact path='/' render={ () => <Profile /> } />
+          <Route path='/profile' render={ () => <Profile /> } />
+          <Route path='/dialogs' render={ () => <Dialogs /> } />
       </div>
     </div>
     </BrowserRouter>

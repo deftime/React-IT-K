@@ -1,6 +1,6 @@
 import React from 'react';
-import cls from '../../css/dialogs.module.css';
-import ava from '../../images/smile.png';
+import cls from '../../../css/dialogs.module.css';
+import ava from '../../../images/smile.png';
 import {NavLink} from 'react-router-dom';
 
 function DialogItem(props) {

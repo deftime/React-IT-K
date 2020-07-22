@@ -4,7 +4,7 @@ import NewPostContainer from './newPostContainer';
 
 function MyPosts(props) {
 
-  let posts = props.postsArr.map( post => <Post message={post.message} likes={post.likes} />);
+  let posts = props.postsArr.map( post => <Post key={post.id} message={post.message} likes={post.likes} />);
 
   return (
     <div>

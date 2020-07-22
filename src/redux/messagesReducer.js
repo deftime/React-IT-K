@@ -19,6 +19,8 @@ let defaultData = {
 }
 
 function messagesReducer(partData = defaultData, action) {
+  let dataCopy = {...partData};
+  dataCopy.messageData = [...partData.messageData];
   switch (action.type) {
     case SND_MSG:
       let objProt = {
@@ -26,16 +28,16 @@ function messagesReducer(partData = defaultData, action) {
         text: partData.newMsgText,
         line: 'msgTo'
       }
-      partData.messageData.push(objProt);
-      partData.newMsgText = '';
+      dataCopy.messageData.push(objProt);
+      dataCopy.newMsgText = '';
       break;
     case CHG_MSG_TEXT:
-      partData.newMsgText = action.text;
+      dataCopy.newMsgText = action.text;
       break;
     default:
       return partData;
   }
-  return partData;
+  return dataCopy;
 }
 
 export let sendMessage = () => ({type: SND_MSG});

@@ -11,6 +11,8 @@ let defaultData = {
 };
 
 function profileReducer(partData = defaultData, action) {
+  let dataCopy = {...partData};
+  dataCopy.postData = [...partData.postData];
   switch (action.type) {
     case ADD_WALL_POST:
       let objProt = {
@@ -18,16 +20,16 @@ function profileReducer(partData = defaultData, action) {
         message: partData.newPostText,
         likes: 0
       }
-      partData.postData.push(objProt);
-      partData.newPostText = '';
+      dataCopy.postData.push(objProt);
+      dataCopy.newPostText = '';
       break;
     case CHG_POST_TEXT:
-      partData.newPostText = action.text;
+      dataCopy.newPostText = action.text;
       break;
     default:
       return partData;
   }
-  return partData;
+  return dataCopy;
 }
 
 export let addWallPost = () => ({type: ADD_WALL_POST});

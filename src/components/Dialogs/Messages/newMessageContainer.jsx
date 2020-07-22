@@ -14,7 +14,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(sendMessage());
     },
     editText: (text) => {
-      dispatch(changeMsgText());
+      dispatch(changeMsgText(text));
     }
   }
 }

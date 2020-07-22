@@ -5,14 +5,12 @@ import App from './App';
 import store from './redux/reduxState';
 import {Provider} from 'react-redux';
 
-function renderDOM() {
-  ReactDOM.render(
-      <Provider store={store}>
-        <App />
-      </Provider>,
-      document.getElementById('root')
-  );
-}
+ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+);
 
-renderDOM();
-store.subscribe(renderDOM);
+// renderDOM();
+// store.subscribe(renderDOM);

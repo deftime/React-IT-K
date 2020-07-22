@@ -14,7 +14,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(addWallPost());
     },
     changeText: (text) => {
-      dispatch(changePostText());
+      dispatch(changePostText(text));
     }
   }
 }

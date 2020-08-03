@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
+import FindUsersContainer from './components/FindUsers/FindUsersContainer';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 function App(props) {
@@ -16,6 +17,7 @@ function App(props) {
           <Route exact path='/' render={ () => <Profile /> } />
           <Route path='/profile' render={ () => <Profile /> } />
           <Route path='/dialogs' render={ () => <Dialogs /> } />
+          <Route path='/users' render={ () => <FindUsersContainer /> } />
       </div>
     </div>
     </BrowserRouter>

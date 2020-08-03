@@ -9,7 +9,8 @@ function Menu(props) {
       <NavLink to="/dialogs" activeClassName={cls.active}>Messages</NavLink>
       <a href="/">News</a>
       <a href="/">Music</a>
-      <a href="/">Settings</a>
+      <NavLink to="/users" className={cls.sep} activeClassName={cls.active}>Find Users</NavLink>
+      <a href="/" className={cls.sep}>Settings</a>
     </div>
   )
 }

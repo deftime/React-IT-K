@@ -1,0 +1,83 @@
+.main {
+  grid-area: c;
+}
+
+.inner {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.user {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.user .left {
+  width: 100px;
+  text-align: center;
+}
+
+.user .left img {
+  width: 70px;
+}
+
+.follow {
+  color: white;
+  border: none;
+  background-color: green;
+  padding: 3px 10px;
+  width: 70px;
+}
+
+.unfollow {
+  color: grey;
+  border: 1px solid grey;
+  padding: 2px 10px;
+  width: 70px;
+}
+
+.follow:active,
+.unfollow:active {
+  transform: scale(0.9);
+}
+
+.user .right {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  background-color: #e0efff;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.user .right .name span:first-child {
+  font-weight: bold;
+}
+
+.user .right .name span:last-child {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.user .right .location span:last-child {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.moreButton {
+  text-align: center;
+  padding: 25px 0;
+}
+
+.moreButton button {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: green;
+  border: none;
+  padding: 10px 15px;
+}
+
+.moreButton button:active {
+  transform: scale(0.9);
+}

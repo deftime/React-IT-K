@@ -13,7 +13,7 @@ aside a {
   color: #69A7EA;
 }
 
-aside a:last-child {
+.navBlock .sep {
   margin-top: 20px;
   font-weight: normal;
 }

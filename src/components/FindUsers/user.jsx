@@ -3,16 +3,11 @@ import cls from '../../css/findusers.module.css';
 import ava from '../../images/post-ava.png';
 
 function user(props) {
-
-  function followToggle() {
-    props.followChange(props.id);
-  }
-
   return (
     <div className={cls.user}>
       <div className={cls.left}>
         <img src={props.ava ? props.ava : ava} alt="ava" /><br/>
-        <button onClick={followToggle} className={props.follow ? cls.unfollow : cls.follow}>{props.follow ? 'Unfollow' : 'Follow'}</button>
+        <button onClick={(e) => props.followChange(props.id)} className={props.follow ? cls.unfollow : cls.follow}>{props.follow ? 'Unfollow' : 'Follow'}</button>
       </div>
       <div className={cls.right}>
         <div className={cls.name}>

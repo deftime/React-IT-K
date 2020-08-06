@@ -1,7 +1,7 @@
 import React from 'react';
 import cls from '../../css/findusers.module.css';
 import User from './user';
-import FindUsersContainer from './FindUsersContainer';
+import loader from '../../images/loader.svg';
 
 function FindUsers(props) {
 
@@ -15,13 +15,25 @@ function FindUsers(props) {
   }
 
   function buildUsers() {
-    return props.usersArr.map( user => <User key={user.id} id={user.id} name={user.name} status={user.status} country={user.country} city={user.city} follow={user.follow} followChange={props.follow} ava={user.photos.small} /> )
+    return props.usersArr.map( user => <User
+      key={user.id}
+      id={user.id} 
+      name={user.name}
+      status={user.status}
+      country={user.country}
+      city={user.city}
+      follow={user.follow}
+      followChange={props.follow}
+      ava={user.photos.small} /> )
   }
 
   return (
     <div className={cls.main}>
       <div className={cls.inner}>
-        { buildUsers() }
+        <div className={cls.loaderWrap} style={ props.isFetch ? {opacity: 0.5} : {opacity: 1}}>
+          { props.isFetch ? <div className={cls.loader}><img src={loader} alt="loader" /></div> : undefined }
+          { buildUsers() }
+        </div>
         <div className={cls.pagin}>
           <div className={cls.pagInner}>
             { buildPag() }

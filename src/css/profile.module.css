@@ -43,9 +43,21 @@
   padding: 10px;
 }
 
-.main .userDetails span:first-child {
-  display: inline-block;
+.main .userDetails > div {
   margin-bottom: 20px;
+}
+
+.main .userDetails .job span {
+  text-decoration: underline;
+}
+
+.main .userDetails .name span:nth-child(1) {
+  font-weight: bold;
+}
+
+.main .userDetails .name span:nth-child(3) {
+  font-size: 12px;
+  font-style: italic;
 }
 
 .main .myPosts {

@@ -6,14 +6,24 @@ function ProfileInfo(props) {
     <div>
       <div className={`${cls.userCover} ${cls.mainRow}`}></div>
       <div className={`${cls.userData} ${cls.mainRow}`}>
-        <div className={cls.userAva}></div>
+        <div className={cls.userAva} style={props.photo ? {backgroundImage: `url(${props.photo})`} : undefined}></div>
         <div className={cls.userDetails}>
-          <span>[USER_NAME]</span><br />
-          <span>Age:</span><br />
-          <span>Country:</span><br />
-          <span>City:</span><br />
-          <span>Education:</span><br />
-          <span>Web:</span><br />
+          <div className={cls.name}>
+            <span>{props.name}</span><br />
+            <span>{props.status}</span><br />
+          </div>
+          <div className={cls.links}>
+
+          </div>
+          <div className={cls.job}>
+            <span>{props.job ? 'Looking for job!' : 'Now working or dont need a job...'}</span>
+            <div className={cls.jobDesc}>
+              {props.jobDesc}
+            </div>
+
+          </div>
+
+
         </div>
       </div>
     </div>

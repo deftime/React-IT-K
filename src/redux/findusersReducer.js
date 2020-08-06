@@ -1,6 +1,7 @@
 const FOLLOW = 'follow';
 const GET_DATA = 'setState';
 const CHANGE_PAGE = 'changePageByPaginationClick';
+const TOGGLE_LOADER = 'showOrHidePreLoader';
 
 let defaultData = {
   users: [
@@ -9,9 +10,10 @@ let defaultData = {
     // {id: '3', name: 'Sasha', status: 'React-girl', country: 'Belarus', city: 'Minsk', follow: false},
     // {id: '4', name: 'Andrey', status: 'Developer', country: 'Ukraine', city: 'Lviv', follow: false}
   ],
-  page: 23,
+  page: 1,
   count: 20,
-  totalCount: 3235
+  totalCount: 3235,
+  isFetch: false
 }
 
 function findUsersReducer(partData = defaultData, action) {
@@ -33,14 +35,18 @@ function findUsersReducer(partData = defaultData, action) {
     case CHANGE_PAGE:
       copyData.page = action.slcPage;
       break;
+    case TOGGLE_LOADER:
+      copyData.isFetch = action.loader;
+      break;
     default:
       return partData;
   }
   return copyData;
 };
 
-export let followToggle = (id) => ({type: FOLLOW, id: id});
+export let follow = (id) => ({type: FOLLOW, id: id});
 export let getData = (data, total) => ({type: GET_DATA, data, total});
 export let changePage = (slcPage) => ({type: CHANGE_PAGE, slcPage});
+export let preLoader = (loader) => ({type: TOGGLE_LOADER, loader});
 
 export default findUsersReducer;

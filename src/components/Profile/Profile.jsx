@@ -17,6 +17,7 @@ function Profile(props) {
         job={props.profile.lookingForAJob}
         jobDesc={props.profile.lookingForAJobDescription}
         photo={props.profile.photos.large}
+        contacts={props.profile.contacts}
       />
       <div className={`${cls.myPosts} ${cls.mainRow}`}>
       <MyPostsContainer />

@@ -44,7 +44,7 @@
 }
 
 .main .userDetails > div {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .main .userDetails .job span {
@@ -126,4 +126,44 @@
   width: 35px;
   padding: 0 5px;
   cursor: pointer;
+}
+
+/* Links Block */
+
+.links a {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  /* border: 1px solid black; */
+  border-radius: 50%;
+  background-image: url('../images/icons.png');
+  background-size: 75px;
+}
+
+.links .facebook {
+  background-position: 0 100px;
+}
+
+.links .twitter {
+  background-position: 0 0;
+}
+
+.links .vk {
+  background-position: 50px 0;
+}
+
+.links .youtube {
+  background-position: 50px 50px;
+}
+
+.links .instagram {
+  background-position: 0 50px;
+}
+
+.links .github {
+  background-position: 100px 0;
+}
+
+.links .website {
+  background-position: 100px 50px;
 }

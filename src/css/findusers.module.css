@@ -36,6 +36,18 @@
   width: 70px;
 }
 
+.user .left button[disabled] {
+  color: white;
+  border: 1px solid grey;
+  padding: 2px 10px;
+  width: 70px;
+  background-color: grey;
+}
+
+.user .left button[disabled]:active {
+  transform: none;
+}
+
 .follow:active,
 .unfollow:active {
   transform: scale(0.9);

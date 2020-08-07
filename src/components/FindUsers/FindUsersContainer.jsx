@@ -1,28 +1,40 @@
 import React from 'react';
-import * as axios from 'axios';
 import FindUsers from './FindUsers';
 import {connect} from 'react-redux';
-import {follow, getData, changePage, preLoader} from '../../redux/findusersReducer';
+import {follow, getData, changePage, preLoader, isFollow} from '../../redux/findusersReducer';
+import {requestAPI} from '../../api/api';
 
 class FindUsersClass extends React.Component {
 
   componentDidMount() {
     this.props.preLoader(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}&count=${this.props.count}`)
-      .then(response => {
-        this.props.preLoader(false);
-        this.props.getData(response.data.items, response.data.totalCount);
-      })
+    requestAPI.getUsers(this.props.page, this.props.count)
+    .then(data => {
+      this.props.preLoader(false);
+      this.props.getData(data.items, data.totalCount);
+    })
+
+    // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}&count=${this.props.count}`)
+    //   .then(response => {
+    //     this.props.preLoader(false);
+    //     this.props.getData(response.data.items, response.data.totalCount);
+    //   })
   }
 
   changePage = (pagNum) => {
     this.props.preLoader(true);
     this.props.changePage(pagNum);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pagNum}&count=${this.props.count}`)
-      .then(response => {
-        this.props.preLoader(false);
-        this.props.getData(response.data.items, response.data.totalCount);
-      })
+    requestAPI.getUsers(pagNum, this.props.count)
+    .then(data => {
+      this.props.preLoader(false);
+      this.props.getData(data.items, data.totalCount);
+    })
+
+    // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pagNum}&count=${this.props.count}`, {withCredentials: true})
+    //   .then(response => {
+    //     this.props.preLoader(false);
+    //     this.props.getData(response.data.items, response.data.totalCount);
+    //   })
   }
 
   render() {
@@ -34,6 +46,9 @@ class FindUsersClass extends React.Component {
       changePage={this.changePage}
       follow={this.props.follow}
       isFetch={this.props.isFetch}
+      buttonUserId={this.props.buttonUserId}
+      followFetch={this.props.followFetch}
+      toggleButton={this.props.isFollow}
     />
   }
 }
@@ -44,7 +59,9 @@ function mapStateToProps(data) {
     page: data.findusersPage.page,
     count: data.findusersPage.count,
     totalItems: data.findusersPage.totalCount,
-    isFetch: data.findusersPage.isFetch
+    isFetch: data.findusersPage.isFetch,
+    buttonUserId: data.findusersPage.isFollowing.id,
+    followFetch: data.findusersPage.isFollowing.fetch
   }
 }
 
@@ -65,4 +82,4 @@ function mapStateToProps(data) {
 //   }
 // }
 
-export default connect(mapStateToProps, {follow, getData, changePage, preLoader})(FindUsersClass);
+export default connect(mapStateToProps, {follow, getData, changePage, preLoader, isFollow})(FindUsersClass);

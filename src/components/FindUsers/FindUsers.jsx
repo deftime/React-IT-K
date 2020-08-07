@@ -15,16 +15,19 @@ function FindUsers(props) {
   }
 
   function buildUsers() {
-    return props.usersArr.map( user => <User
-      key={user.id}
-      id={user.id} 
-      name={user.name}
-      status={user.status}
-      country={user.country}
-      city={user.city}
-      follow={user.follow}
-      followChange={props.follow}
-      ava={user.photos.small} /> )
+    return props.usersArr.map( (user) => <User
+        key={user.id}
+        id={user.id}
+        name={user.name}
+        status={user.status}
+        country={user.country}
+        city={user.city}
+        follow={user.followed}
+        followChange={props.follow}
+        ava={user.photos.small}
+        buttonUserId={props.buttonUserId}
+        followFetch={props.followFetch}
+        toggleButton={props.toggleButton} />)
   }
 
   return (

@@ -8,17 +8,15 @@ function mapStateToProps(data) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addMessage: () => {
-      dispatch(sendMessage());
-    },
-    editText: (text) => {
-      dispatch(changeMsgText(text));
-    }
-  }
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     addMessage: () => {
+//       dispatch(sendMessage());
+//     },
+//     editText: (text) => {
+//       dispatch(changeMsgText(text));
+//     }
+//   }
+// }
 
-let newMessageContainer = connect(mapStateToProps, mapDispatchToProps)(NewMessage);
-
-export default newMessageContainer;
+export default connect(mapStateToProps, {sendMessage, changeMsgText})(NewMessage);

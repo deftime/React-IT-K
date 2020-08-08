@@ -7,6 +7,4 @@ function mapStateToProps(data) {
   }
 }
 
-let usersContainer = connect(mapStateToProps)(Users)
-
-export default usersContainer;
+export default connect(mapStateToProps)(Users)

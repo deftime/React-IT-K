@@ -7,6 +7,4 @@ function mapStateToProps(data) {
   }
 }
 
-let messagesListContainer = connect(mapStateToProps)(MessagesList);
-
-export default messagesListContainer;
+export default connect(mapStateToProps)(MessagesList);

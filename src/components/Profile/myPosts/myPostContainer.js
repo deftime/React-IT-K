@@ -7,6 +7,4 @@ function mapStateToProps(data) {
   }
 }
 
-let myPostContainer = connect(mapStateToProps)(MyPosts);
-
-export default myPostContainer;
+export default connect(mapStateToProps)(MyPosts);

@@ -2,22 +2,24 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import cls from '../../css/findusers.module.css';
 import ava from '../../images/post-ava.png';
-import {requestAPI} from '../../api/api';
 
 function user(props) {
 
   function followUn() {
     if (!props.follow) {
-      props.toggleButton(props.id, true);
-      requestAPI.follow(props.id)
-      .then(data => {
-        if (data.resultCode === 0) {
-          props.followChange(props.id);
-        } else if (data.resultCode === 1) {
-          console.log(`ERROR: ${data.messages[0]}`);
-        }
-        props.toggleButton(props.id, false);
-      })
+      props.toggleFollow(props.id, 'follow');
+
+      // props.toggleButton(props.id, true);
+      // requestAPI.follow(props.id)
+      // .then(data => {
+      //   if (data.resultCode === 0) {
+      //     props.followChange(props.id);
+      //   } else if (data.resultCode === 1) {
+      //     console.log(`ERROR: ${data.messages[0]}`);
+      //   }
+      //   props.toggleButton(props.id, false);
+      // })
+
       // axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, null, {
       //   withCredentials: true,
       //   headers: {
@@ -32,16 +34,19 @@ function user(props) {
       //     }
       //   })
     } else if (props.follow) {
-      props.toggleButton(props.id, true);
-      requestAPI.unfollow(props.id)
-      .then(data => {
-        if (data.resultCode === 0) {
-          props.followChange(props.id);
-        } else if (data.resultCode === 1) {
-          console.log(`ERROR: ${data.messages[0]}`);
-        }
-        props.toggleButton(props.id, false);
-      })
+      props.toggleFollow(props.id, 'unfollow');
+
+      // props.toggleButton(props.id, true);
+      // requestAPI.unfollow(props.id)
+      // .then(data => {
+      //   if (data.resultCode === 0) {
+      //     props.followChange(props.id);
+      //   } else if (data.resultCode === 1) {
+      //     console.log(`ERROR: ${data.messages[0]}`);
+      //   }
+      //   props.toggleButton(props.id, false);
+      // })
+
       // axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
       //   withCredentials: true,
       //   headers: {

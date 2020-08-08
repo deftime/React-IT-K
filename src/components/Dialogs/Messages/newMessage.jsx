@@ -5,26 +5,18 @@ import cls from '../../../css/dialogs.module.css';
 function newMessage(props) {
   let msgText = React.createRef();
 
-  function stopRefresh(event) {
-    event.preventDefault();
-  }
-
-  function eraseField() {
-    msgText.current.value = '';
-  }
-
   function editMsgField() {
-    props.editText(msgText.current.value);
+    props.changeMsgText(msgText.current.value);
   }
 
   function sendMsg() {
-    props.addMessage();
+    props.sendMessage();
   }
 
   return (
     <div className={cls.sendMessage}>
-      <form name="sendMsgFrom" onSubmit={stopRefresh}>
-        <textarea name="msgText" value={props.newMsgText} ref={msgText} onFocus={eraseField} onChange={editMsgField}></textarea><br />
+      <form name="sendMsgFrom" onSubmit={(e)=>e.preventDefault()}>
+        <textarea name="msgText" value={props.newMsgText} ref={msgText} onFocus={(e)=>e.target.value = ''} onChange={editMsgField}></textarea><br />
         <button type="submit" name="sendButton" onClick={sendMsg}>Send</button>
       </form>
     </div>

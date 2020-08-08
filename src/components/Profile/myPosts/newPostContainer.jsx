@@ -8,17 +8,15 @@ function mapStateToProps(data) {
   }
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    send: () => {
-      dispatch(addWallPost());
-    },
-    changeText: (text) => {
-      dispatch(changePostText(text));
-    }
-  }
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     send: () => {
+//       dispatch(addWallPost());
+//     },
+//     changeText: (text) => {
+//       dispatch(changePostText(text));
+//     }
+//   }
+// }
 
-let newPostContainer = connect(mapStateToProps, mapDispatchToProps)(NewPost);
-
-export default newPostContainer;
+export default connect(mapStateToProps, {addWallPost, changePostText})(NewPost);

@@ -1,3 +1,5 @@
+import {requestAPI} from '../api/api';
+
 const FOLLOW = 'follow';
 const GET_DATA = 'setState';
 const CHANGE_PAGE = 'changePageByPaginationClick';
@@ -54,10 +56,39 @@ function findUsersReducer(partData = defaultData, action) {
   return copyData;
 };
 
+
+// Actions
 export let follow = (id) => ({type: FOLLOW, id: id});
 export let getData = (data, total) => ({type: GET_DATA, data, total});
 export let changePage = (slcPage) => ({type: CHANGE_PAGE, slcPage});
 export let preLoader = (loader) => ({type: TOGGLE_LOADER, loader});
 export let isFollow = (userId, fetch) => ({type: TOGGLE_FOLLOW, userId, fetch});
+
+//Thunks
+export function setUsers(page, count) {
+  return (dispatch) => {
+    dispatch(preLoader(true));
+    requestAPI.getUsers(page, count)
+    .then(data => {
+      dispatch(preLoader(false));
+      dispatch(getData(data.items, data.totalCount));
+    })
+  }
+}
+
+export function toggleFollow(id, status) {
+  return (dispatch) => {
+    dispatch(isFollow(id, true));
+    requestAPI[status](id)
+    .then(data => {
+      if (data.resultCode === 0) {
+        dispatch(follow(id));
+      } else if (data.resultCode === 1) {
+        console.log(`ERROR: ${data.messages[0]}`);
+      }
+      dispatch(isFollow(id, false));
+    })
+  }
+}
 
 export default findUsersReducer;

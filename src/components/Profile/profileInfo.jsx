@@ -12,7 +12,6 @@ function ProfileInfo(props) {
     }
 
   }
-  console.log(iconArr);
 
   // <a href="#" className={cls.facebook}></a>
   // <a href="#" className={cls.twitter}></a>

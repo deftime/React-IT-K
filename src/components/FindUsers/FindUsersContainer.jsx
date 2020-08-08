@@ -1,18 +1,19 @@
 import React from 'react';
 import FindUsers from './FindUsers';
 import {connect} from 'react-redux';
-import {follow, getData, changePage, preLoader, isFollow} from '../../redux/findusersReducer';
-import {requestAPI} from '../../api/api';
+import {changePage, setUsers, toggleFollow} from '../../redux/findusersReducer';
 
 class FindUsersClass extends React.Component {
 
   componentDidMount() {
-    this.props.preLoader(true);
-    requestAPI.getUsers(this.props.page, this.props.count)
-    .then(data => {
-      this.props.preLoader(false);
-      this.props.getData(data.items, data.totalCount);
-    })
+    this.props.setUsers(this.props.page, this.props.count);
+
+    // this.props.preLoader(true);
+    // requestAPI.getUsers(this.props.page, this.props.count)
+    // .then(data => {
+    //   this.props.preLoader(false);
+    //   this.props.getData(data.items, data.totalCount);
+    // })
 
     // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}&count=${this.props.count}`)
     //   .then(response => {
@@ -22,13 +23,16 @@ class FindUsersClass extends React.Component {
   }
 
   changePage = (pagNum) => {
-    this.props.preLoader(true);
     this.props.changePage(pagNum);
-    requestAPI.getUsers(pagNum, this.props.count)
-    .then(data => {
-      this.props.preLoader(false);
-      this.props.getData(data.items, data.totalCount);
-    })
+    this.props.setUsers(pagNum, this.props.count);
+
+    // this.props.preLoader(true);
+    // this.props.changePage(pagNum);
+    // requestAPI.getUsers(pagNum, this.props.count)
+    // .then(data => {
+    //   this.props.preLoader(false);
+    //   this.props.getData(data.items, data.totalCount);
+    // })
 
     // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pagNum}&count=${this.props.count}`, {withCredentials: true})
     //   .then(response => {
@@ -44,11 +48,10 @@ class FindUsersClass extends React.Component {
       count={this.props.count}
       page={this.props.page}
       changePage={this.changePage}
-      follow={this.props.follow}
       isFetch={this.props.isFetch}
       buttonUserId={this.props.buttonUserId}
       followFetch={this.props.followFetch}
-      toggleButton={this.props.isFollow}
+      toggleFollow={this.props.toggleFollow}
     />
   }
 }
@@ -82,4 +85,4 @@ function mapStateToProps(data) {
 //   }
 // }
 
-export default connect(mapStateToProps, {follow, getData, changePage, preLoader, isFollow})(FindUsersClass);
+export default connect(mapStateToProps, {changePage, setUsers, toggleFollow})(FindUsersClass);

@@ -1,3 +1,5 @@
+import {requestAPI} from '../api/api';
+
 const ADD_WALL_POST = 'ADD_WALL_POST';
 const CHG_POST_TEXT = 'CHANGE_POST_TEXT';
 const SET_PROFILE = 'setCurrnetProfileOnPageByLink';
@@ -38,8 +40,19 @@ function profileReducer(partData = defaultData, action) {
   return dataCopy;
 }
 
+//Actions
 export let addWallPost = () => ({type: ADD_WALL_POST});
 export let changePostText = (text) => ({type: CHG_POST_TEXT, text: text});
-export let setProfile = (profile) => ({type: SET_PROFILE, profile});
+export let writeProfile = (profile) => ({type: SET_PROFILE, profile});
+
+//Thunks
+export function setProfile(userId) {
+  return (dispatch) => {
+    requestAPI.getProfile(userId)
+    .then(data => {
+      dispatch(writeProfile(data));
+    })
+  }
+}
 
 export default profileReducer;

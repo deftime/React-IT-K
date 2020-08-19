@@ -7,6 +7,4 @@ function mapStateToProps(data) {
   }
 }
 
-let friendsContainer = connect(mapStateToProps)(Friends);
-
-export default friendsContainer;
+export default connect(mapStateToProps)(Friends);

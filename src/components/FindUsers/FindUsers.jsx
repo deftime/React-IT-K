@@ -23,6 +23,7 @@ function FindUsers(props) {
         country={user.country}
         city={user.city}
         ava={user.photos.small}
+        follow={user.followed}
         buttonUserId={props.buttonUserId}
         followFetch={props.followFetch}
         toggleFollow={props.toggleFollow}

@@ -1,14 +1,10 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
 import cls from '../../css/dialogs.module.css';
 import UsersContainer from './Users/UsersContainer';
 import Messages from './Messages/Messages';
-import store from '../../redux/reduxState';
+import withAuth from '../../hocs/withAuth';
 
 function Dialogs(props) {
-  if (!store.getState().auth.id) {
-    return <Redirect to='/login' />
-  }
   return (
     <div className={cls.main}>
       <UsersContainer />
@@ -17,4 +13,4 @@ function Dialogs(props) {
   )
 }
 
-export default Dialogs;
+export default withAuth(Dialogs);

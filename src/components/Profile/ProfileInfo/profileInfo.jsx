@@ -1,5 +1,6 @@
 import React from 'react';
-import cls from '../../css/profile.module.css';
+import cls from '../../../css/profile.module.css';
+import Status from './status';
 
 function ProfileInfo(props) {
 
@@ -10,16 +11,7 @@ function ProfileInfo(props) {
     } else {
       continue;
     }
-
   }
-
-  // <a href="#" className={cls.facebook}></a>
-  // <a href="#" className={cls.twitter}></a>
-  // <a href="#" className={cls.vk}></a>
-  // <a href="#" className={cls.youtube}></a>
-  // <a href="#" className={cls.instagram}></a>
-  // <a href="#" className={cls.github}></a>
-  // <a href="#" className={cls.website}></a>
 
   return (
     <div>
@@ -30,6 +22,7 @@ function ProfileInfo(props) {
           <div className={cls.name}>
             <span>{props.name}</span><br />
             <span>{props.status}</span><br />
+            <Status />
           </div>
           <div className={cls.links}>
             {iconArr}

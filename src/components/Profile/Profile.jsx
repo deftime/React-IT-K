@@ -1,6 +1,6 @@
 import React from 'react';
 import cls from '../../css/profile.module.css';
-import ProfileInfo from './profileInfo';
+import ProfileInfo from './ProfileInfo/profileInfo';
 import MyPostsContainer from './myPosts/myPostContainer';
 import loader from '../../images/loader.svg';
 

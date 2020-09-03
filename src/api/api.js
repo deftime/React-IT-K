@@ -18,7 +18,7 @@ class SamuraiAPI {
     return this.global.get(`/auth/me`)
     .then(response => response.data)
   }
-  getProfile(userId = 2) {
+  getProfile(userId = 9669) {
     return this.global.get(`/profile/${userId}`)
     .then(response => response.data)
   }
@@ -29,6 +29,13 @@ class SamuraiAPI {
   unfollow(userId) {
     return this.global.delete(`/follow/${userId}`)
     .then(response => response.data)
+  }
+  getStatus(userId = 9669) {
+    return this.global.get(`/profile/status/${userId}`)
+    .then(response => response.data)
+  }
+  updateStatus(status) {
+    return this.global.put(`/profile/status`, {status})
   }
 }
 

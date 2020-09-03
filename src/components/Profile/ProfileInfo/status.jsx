@@ -1,21 +1,36 @@
 import React from 'react';
-import cls from '../../../css/profile.module.css';
 
 class Status extends React.Component {
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.status != this.props.status) {
+      this.setState({
+        status: this.props.status
+      })
+    }
+  }
+
   state = {
     editMode: false,
-    text: 'custom status...'
+    status: this.props.status
   }
 
-  edit = () => {
-    this.setState({
-      editMode: !this.state.editMode
-    })
+  edit = (event) => {
+    if (this.state.editMode === true) {
+      this.setState({
+        editMode: !this.state.editMode
+      })
+      this.props.updateStatus(this.state.status);
+    } else {
+      this.setState({
+        editMode: !this.state.editMode
+      })
+    }
   }
 
-  write = (value) => {
+  write = (event) => {
     this.setState({
-      text: value
+      status: event.target.value
     })
   }
 
@@ -23,8 +38,8 @@ class Status extends React.Component {
     return (
       <>
         {this.state.editMode
-          ? <input autoFocus={true} onChange={(e)=>this.write(e.target.value)} onBlur={this.edit} value={this.state.text} />
-          : <span onDoubleClick={this.edit}>{this.state.text}</span>}
+          ? <input autoFocus={true} onBlur={this.edit} onChange={this.write} value={this.state.status} />
+          : <span onDoubleClick={this.edit}>{this.props.status || '[no-status]'}</span>}
       </>
     )
   }

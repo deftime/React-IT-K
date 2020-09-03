@@ -13,7 +13,9 @@ function Profile(props) {
     <div className={cls.main}>
       <ProfileInfo
         name={props.profile.fullName}
-        status={props.profile.aboutMe}
+        status={props.status}
+        updateStatus={props.updateStatus}
+        about={props.profile.aboutMe}
         job={props.profile.lookingForAJob}
         jobDesc={props.profile.lookingForAJobDescription}
         photo={props.profile.photos.large}

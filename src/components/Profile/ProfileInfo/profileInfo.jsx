@@ -4,13 +4,16 @@ import Status from './status';
 
 function ProfileInfo(props) {
 
-  let iconArr = [];
-  for (let key in props.contacts) {
-    if (props.contacts[key]) {
-      iconArr.push(<a href={props.contacts[key]} className={cls[key]}></a>);
-    } else {
-      continue;
+  function buildIcons() {
+    let iconArr = [];
+    for (let key in props.contacts) {
+      if (props.contacts[key]) {
+        iconArr.push(<a href={props.contacts[key]} className={cls[key]}></a>);
+      } else {
+        continue;
+      }
     }
+    return iconArr;
   }
 
   return (
@@ -21,16 +24,19 @@ function ProfileInfo(props) {
         <div className={cls.userDetails}>
           <div className={cls.name}>
             <span>{props.name}</span><br />
-            <span>{props.status}</span><br />
-            <Status />
+            <Status status={props.status} updateStatus={props.updateStatus} />
           </div>
           <div className={cls.links}>
-            {iconArr}
+            {buildIcons()}
           </div>
           <div className={cls.job}>
             <span>{props.job ? 'Looking for job!' : 'Now working or dont need a job...'}</span>
             <div className={cls.jobDesc}>
               {props.jobDesc}
+            </div>
+            <span className={cls.job}>{props.about ? 'About Me:' : ''}</span>
+            <div>
+              {props.about}
             </div>
 
           </div>

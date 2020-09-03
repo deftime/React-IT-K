@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Profile from './Profile';
 import {connect} from 'react-redux';
-import {setProfile} from '../../redux/profileReducer';
+import {setProfile, setUserStatus, updateUserStatus} from '../../redux/profileReducer';
 import withAuth from '../../hocs/withAuth';
 import {compose} from 'redux';
 
@@ -11,6 +11,7 @@ class ProfileClass extends React.Component {
 
   componentDidMount() {
     this.props.setProfile(this.props.match.params.userId);
+    this.props.setUserStatus(this.props.match.params.userId);
 
     // let userId = this.props.match.params.userId;
     // requestAPI.getProfile(userId)
@@ -26,20 +27,21 @@ class ProfileClass extends React.Component {
 
   render() {
     return (
-      <Profile profile={this.props.profile} />
+      <Profile profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateUserStatus}/>
     )
   }
 }
 
 function setStateToProps(data) {
   return {
-    profile: data.profilePage.currentProfile
+    profile: data.profilePage.currentProfile,
+    status: data.profilePage.status
   }
 }
 
 
 export default compose(
-  connect(setStateToProps, {setProfile}),
+  connect(setStateToProps, {setProfile, setUserStatus, updateUserStatus}),
   withRouter,
   withAuth
 )(ProfileClass);

@@ -1,7 +1,6 @@
 import {requestAPI} from '../api/api';
 
 const ADD_WALL_POST = 'ADD_WALL_POST';
-const CHG_POST_TEXT = 'CHANGE_POST_TEXT';
 const SET_PROFILE = 'setCurrnetProfileOnPageByLink';
 const SET_STATUS = 'setCurrentUserStatus';
 
@@ -11,7 +10,6 @@ let defaultData = {
     {id: 2, message: 'Testing post! Send this to your wall!', likes: 0 },
     {id: 3, message: 'What are you going to do with your social network??', likes: 2 }
   ],
-  newPostText: 'Enter text here...',
   currentProfile: {},
   status: ''
 };
@@ -24,14 +22,10 @@ function profileReducer(partData = defaultData, action) {
     case ADD_WALL_POST:
       let objProt = {
         id: partData.postData.length + 1,
-        message: partData.newPostText,
+        message: action.postText,
         likes: 0
       }
       dataCopy.postData.push(objProt);
-      dataCopy.newPostText = '';
-      break;
-    case CHG_POST_TEXT:
-      dataCopy.newPostText = action.text;
       break;
     case SET_PROFILE:
       dataCopy.currentProfile = action.profile;
@@ -46,10 +40,10 @@ function profileReducer(partData = defaultData, action) {
 }
 
 //Actions
-export let addWallPost = () => ({type: ADD_WALL_POST});
-export let changePostText = (text) => ({type: CHG_POST_TEXT, text});
+export let addWallPost = (postText) => ({type: ADD_WALL_POST, postText});
 export let writeProfile = (profile) => ({type: SET_PROFILE, profile});
 export let setStatus = (status) => ({type: SET_STATUS, status});
+// export let changePostText = (text) => ({type: CHG_POST_TEXT, text});
 
 //Thunks
 export function setProfile(userId) {

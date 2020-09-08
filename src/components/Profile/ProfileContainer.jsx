@@ -10,8 +10,14 @@ import {compose} from 'redux';
 class ProfileClass extends React.Component {
 
   componentDidMount() {
-    this.props.setProfile(this.props.match.params.userId);
-    this.props.setUserStatus(this.props.match.params.userId);
+    let userId;
+    if (this.props.match.params.userId) {
+      userId = this.props.match.params.userId;
+    } else {
+      userId = this.props.userId;
+    }
+    this.props.setProfile(userId);
+    this.props.setUserStatus(userId);
 
     // let userId = this.props.match.params.userId;
     // requestAPI.getProfile(userId)

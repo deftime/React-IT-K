@@ -1,12 +1,24 @@
+import React from 'react';
 import {connect} from 'react-redux';
-import {sendMessage, changeMsgText} from '../../../redux/messagesReducer';
+import {sendMessage} from '../../../redux/messagesReducer';
 import NewMessage from './newMessage';
 
-function mapStateToProps(data) {
-  return {
-    newMsgText: data.messagesPage.newMsgText
+function newMessageContainer(props) {
+
+  function submitForm(fields) {
+    props.sendMessage(fields.msgText);
   }
+
+  return (
+    <NewMessage onSubmit={submitForm} />
+  )
 }
+
+// function mapStateToProps(data) {
+//   return {
+//     newMsgText: data.messagesPage.newMsgText
+//   }
+// }
 
 // function mapDispatchToProps(dispatch) {
 //   return {
@@ -19,4 +31,4 @@ function mapStateToProps(data) {
 //   }
 // }
 
-export default connect(mapStateToProps, {sendMessage, changeMsgText})(NewMessage);
+export default connect(null, {sendMessage})(newMessageContainer);

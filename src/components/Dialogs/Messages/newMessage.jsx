@@ -1,26 +1,26 @@
 import React from 'react';
 import cls from '../../../css/dialogs.module.css';
+import {reduxForm, Field} from 'redux-form';
 
 
 function newMessage(props) {
-  let msgText = React.createRef();
 
-  function editMsgField() {
-    props.changeMsgText(msgText.current.value);
-  }
-
-  function sendMsg() {
-    props.sendMessage();
-  }
+  // function editMsgField() {
+  //   props.changeMsgText(msgText.current.value);
+  // }
+  //
+  // function sendMsg() {
+  //   props.sendMessage();
+  // }
 
   return (
     <div className={cls.sendMessage}>
-      <form name="sendMsgFrom" onSubmit={(e)=>e.preventDefault()}>
-        <textarea name="msgText" value={props.newMsgText} ref={msgText} onFocus={(e)=>e.target.value = ''} onChange={editMsgField}></textarea><br />
-        <button type="submit" name="sendButton" onClick={sendMsg}>Send</button>
+      <form name="sendMsgFrom" onSubmit={props.handleSubmit}>
+        <Field component="textarea" name="msgText" placeholder="Enter message here..." /><br />
+        <button>Send</button>
       </form>
     </div>
   )
 }
 
-export default newMessage;
+export default reduxForm({form: 'newMessage'})(newMessage);

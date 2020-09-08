@@ -1,0 +1,38 @@
+.main {
+  grid-area: c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.inner input {
+  border: none;
+  border-radius: 5px;
+  background-color: #e0efff;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.inner label {
+  font-size: 12px;
+}
+
+.inner button {
+  border: none;
+  text-align: center;
+  background-color: green;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.inner button:active {
+  transform: scale(0.9);
+}

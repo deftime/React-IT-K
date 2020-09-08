@@ -1,5 +1,4 @@
 const SND_MSG = 'SEND_MESSAGE';
-const CHG_MSG_TEXT = 'CHANGE_MSG_TEXT';
 
 let defaultData = {
   dialogData: [
@@ -14,8 +13,7 @@ let defaultData = {
     {id: 2, text: 'And my answer to it!', line: 'msgTo'},
     {id: 3, text: 'Good messanger!', line: 'msgFrom'},
     {id: 4, text: 'Yes!', line: 'msgTo'}
-  ],
-  newMsgText: 'Enter your message here...'
+  ]
 }
 
 function messagesReducer(partData = defaultData, action) {
@@ -25,14 +23,10 @@ function messagesReducer(partData = defaultData, action) {
     case SND_MSG:
       let objProt = {
         id: partData.messageData.length + 1,
-        text: partData.newMsgText,
+        text: action.msgText,
         line: 'msgTo'
       }
       dataCopy.messageData.push(objProt);
-      dataCopy.newMsgText = '';
-      break;
-    case CHG_MSG_TEXT:
-      dataCopy.newMsgText = action.text;
       break;
     default:
       return partData;
@@ -40,7 +34,7 @@ function messagesReducer(partData = defaultData, action) {
   return dataCopy;
 }
 
-export let sendMessage = () => ({type: SND_MSG});
-export let changeMsgText = (text) => ({type: CHG_MSG_TEXT, text: text});
+export let sendMessage = (msgText) => ({type: SND_MSG, msgText});
+// export let changeMsgText = (text) => ({type: CHG_MSG_TEXT, text: text});
 
 export default messagesReducer;

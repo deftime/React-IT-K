@@ -1,12 +1,24 @@
-import {addWallPost, changePostText} from '../../../redux/profileReducer';
+import React from 'react';
+import {addWallPost} from '../../../redux/profileReducer';
 import NewPost from './newPost';
 import {connect} from 'react-redux';
 
-function mapStateToProps(data) {
-  return {
-    newPostText: data.profilePage.newPostText
+function NewPostContainer(props) {
+
+  function submitForm(fields) {
+    props.addWallPost(fields.postMsg);
   }
-};
+
+  return (
+    <NewPost onSubmit={submitForm} />
+  )
+}
+
+// function mapStateToProps(data) {
+//   return {
+//     newPostText: data.profilePage.newPostText
+//   }
+// };
 
 // function mapDispatchToProps(dispatch) {
 //   return {
@@ -19,4 +31,4 @@ function mapStateToProps(data) {
 //   }
 // }
 
-export default connect(mapStateToProps, {addWallPost, changePostText})(NewPost);
+export default connect(null, {addWallPost})(NewPostContainer);

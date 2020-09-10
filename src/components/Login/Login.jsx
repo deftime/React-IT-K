@@ -5,7 +5,6 @@ import LoginForm from './loginform';
 function Login(props) {
 
   function submitForm(formData) {
-    console.log(formData);
     props.logIn(formData.login, formData.password);
   }
 

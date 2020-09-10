@@ -1,7 +1,7 @@
 import React from 'react';
 import cls from '../../css/login.module.css';
 import {reduxForm, Field} from 'redux-form';
-import {required, maxChars25, maxChars50} from '../../redux/reduxForm/validators';
+import {required, maxChars25} from '../../redux/reduxForm/validators';
 import {input} from '../common/fieldComponents';
 
 function LoginForm(props) {

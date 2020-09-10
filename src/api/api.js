@@ -22,6 +22,10 @@ class SamuraiAPI {
     return this.global.post(`/auth/login`, {email: login, password: pass, rememberMe: true})
     .then(response => response.data)
   }
+  authLogout() {
+    return this.global.delete(`/auth/login`)
+    .then(response => response.data)
+  }
   getProfile(userId) {
     return this.global.get(`/profile/${userId}`)
     .then(response => response.data)

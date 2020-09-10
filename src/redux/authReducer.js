@@ -40,6 +40,7 @@ export function checkLogin() {
         dispatch(setAuthData(id, login, email));
       } else if (data.resultCode === 1) {
         dispatch(setErrorMessage(data.messages[0]));
+        dispatch(setAuthData(null, null, null));
       }
     })
   }
@@ -49,11 +50,22 @@ export function logIn(log, pass) {
   return (dispatch) => {
     requestAPI.authLogin(log, pass)
     .then(data => {
-      if (data.resultCode != 0) {
+      if (data.resultCode !== 0) {
         dispatch(setErrorMessage(data.messages[0]));
       } else {
         dispatch(setErrorMessage(null));
-        dispatch(setAuthData(data.data.userId))
+        dispatch(checkLogin());
+      }
+    })
+  }
+}
+
+export function logOut() {
+  return (dispatch) => {
+    requestAPI.authLogout()
+    .then(data => {
+      if (data.resultCode === 0) {
+        dispatch(checkLogin());
       }
     })
   }

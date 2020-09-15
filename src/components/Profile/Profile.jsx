@@ -2,11 +2,13 @@ import React from 'react';
 import cls from '../../css/profile.module.css';
 import ProfileInfo from './ProfileInfo/profileInfo';
 import MyPostsContainer from './myPosts/myPostContainer';
-import loader from '../../images/loader.svg';
+import Loader from '../common/initLoader';
+// import loader from '../../images/loader.svg';
 
 function Profile(props) {
   if (!props.profile.photos) {
-    return <img src={loader} alt="loader" />
+    // return <img src={loader} alt="loader" />
+    return <Loader />
   }
 
   return (

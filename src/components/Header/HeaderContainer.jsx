@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {checkLogin, logOut} from '../../redux/authReducer';
+import {logOut} from '../../redux/authReducer';
 import Header from './Header';
 
 class HeaderContainer extends React.Component {
 
-  componentDidMount() {
-    this.props.checkLogin();
+  // componentDidMount() {
+  //   this.props.checkLogin();
 
     // requestAPI.authMe()
     // .then(data => {
@@ -27,7 +27,7 @@ class HeaderContainer extends React.Component {
     //     this.props.setAuthData(null, null, null, response.data.messages[0]);
     //   }
     // })
-  }
+  // }
 
   render() {
     return (
@@ -43,4 +43,4 @@ function mapStateToProps(data) {
   }
 }
 
-export default connect(mapStateToProps, {checkLogin, logOut})(HeaderContainer);
+export default connect(mapStateToProps, {logOut})(HeaderContainer);

@@ -33,7 +33,7 @@ export let setErrorMessage = (msg) => ({type: SET_ERROR_MESSAGE, msg});
 //Thunks
 export function checkLogin() {
   return (dispatch) => {
-    requestAPI.authMe()
+    return requestAPI.authMe()
     .then(data => {
       if (data.resultCode === 0) {
         let {id, login, email} = data.data;

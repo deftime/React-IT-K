@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import {logIn} from '../../redux/authReducer';
 import Login from './Login';
-import {Redirect} from 'react-router-dom';
+import {errorMessageSelector, checkAuthSelector} from '../../redux/selectors/reselectors';
 
 class LoginClass extends React.Component {
 
@@ -28,8 +29,8 @@ class LoginClass extends React.Component {
 
 function mapStateToProps(data) {
   return {
-    errMsg: data.auth.errorMessage,
-    isAuth: data.auth.id
+    errMsg: errorMessageSelector(data),
+    isAuth: checkAuthSelector(data)
   }
 }
 

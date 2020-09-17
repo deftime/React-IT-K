@@ -39,8 +39,8 @@ export function checkLogin() {
         let {id, login, email} = data.data;
         dispatch(setAuthData(id, login, email));
       } else if (data.resultCode === 1) {
-        dispatch(setErrorMessage(data.messages[0]));
         dispatch(setAuthData(null, null, null));
+        dispatch(setErrorMessage(data.messages[0]));
       }
     })
   }

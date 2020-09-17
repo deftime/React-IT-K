@@ -4,7 +4,6 @@ import cls from '../../css/header.module.css';
 import {NavLink} from 'react-router-dom';
 
 function Header(props) {
-  console.log(props);
   return (
     <header>
       <img src={logolink} alt="mainLogo" width="60" />

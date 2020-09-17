@@ -1,10 +1,11 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import Profile from './Profile';
+import {compose} from 'redux';
 import {connect} from 'react-redux';
+import Profile from './Profile';
 import {setProfile, setUserStatus, updateUserStatus} from '../../redux/profileReducer';
 import withAuth from '../../hocs/withAuth';
-import {compose} from 'redux';
+import {selectProfile, selectStatus} from '../../redux/selectors/reselectors';
 
 
 class ProfileClass extends React.Component {
@@ -40,8 +41,8 @@ class ProfileClass extends React.Component {
 
 function setStateToProps(data) {
   return {
-    profile: data.profilePage.currentProfile,
-    status: data.profilePage.status
+    profile: selectProfile(data),
+    status: selectStatus(data)
   }
 }
 

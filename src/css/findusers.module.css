@@ -98,21 +98,7 @@
 
 .pagInner {
   padding: 0 12px;
-}
-
-.pagInner span {
-  display: inline-block;
-  width: 20px;
-  font-size: 12px;
   text-align: center;
-  padding: 0 5px;
-  border-right: 2px solid black;
-  cursor: pointer;
-}
-
-.pagInner .currPage {
-  font-weight: bold;
-  text-decoration: underline;
 }
 
 /* Pre-loader div */

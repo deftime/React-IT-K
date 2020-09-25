@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {checkLogin} from '../redux/authReducer';
 
 function withAuth(Component) {
   class AuthComponent extends React.Component {
@@ -21,7 +20,7 @@ function withAuth(Component) {
     }
   }
 
-  return connect(mapStateToProps, {checkLogin})(AuthComponent);
+  return connect(mapStateToProps)(AuthComponent);
 }
 
 export default withAuth;

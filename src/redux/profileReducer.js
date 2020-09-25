@@ -47,31 +47,25 @@ export let setStatus = (status) => ({type: SET_STATUS, status});
 
 //Thunks
 export function setProfile(userId) {
-  return (dispatch) => {
-    requestAPI.getProfile(userId)
-    .then(data => {
-      dispatch(writeProfile(data));
-    })
+  return async (dispatch) => {
+    let data = await requestAPI.getProfile(userId);
+    dispatch(writeProfile(data));
   }
 }
 
 export function setUserStatus(userId) {
-  return (dispatch) => {
-    requestAPI.getStatus(userId)
-    .then(data => {
-      dispatch(setStatus(data));
-    })
+  return async (dispatch) => {
+    let data = await requestAPI.getStatus(userId);
+    dispatch(setStatus(data));
   }
 }
 
 export function updateUserStatus(status) {
-  return (dispatch) => {
-    requestAPI.updateStatus(status)
-    .then(response => {
-      if (response.data.resultCode === 0) {
-        dispatch(setStatus(status));
-      }
-    })
+  return async (dispatch) => {
+    let response = await requestAPI.updateStatus(status);
+    if (response.data.resultCode === 0) {
+      dispatch(setStatus(status));
+    }
   }
 }
 

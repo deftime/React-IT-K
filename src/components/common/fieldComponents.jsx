@@ -12,7 +12,6 @@ export function input({input, meta, ...props}) {
 }
 
 export function textarea({input, meta, ...props}) {
-  console.log(meta);
   let errorReq = meta.submitFailed && meta.error;
   let errorMax = meta.active && Array.isArray(meta.error);
   return (

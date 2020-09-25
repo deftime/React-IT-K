@@ -2,17 +2,18 @@ import React from 'react';
 import cls from '../../css/findusers.module.css';
 import User from './user';
 import loader from '../../images/loader.svg';
+import Paginator from '../common/paginator';
 
 function FindUsers(props) {
 
-  function buildPag() {
-    let numPags = Math.ceil(props.totalItems / props.count);
-    let pagsArr = [];
-    for (let i = 1; i <= numPags; i++) {
-      pagsArr.push(i);
-    }
-    return pagsArr.map( pag => <span onClick={()=>props.changePage(pag)} key={pag} className={props.page === pag ? cls.currPage : undefined}>{pag}</span> );
-  }
+  // function buildPag() {
+  //   let numPags = Math.ceil(props.totalItems / props.count);
+  //   let pagsArr = [];
+  //   for (let i = 1; i <= numPags; i++) {
+  //     pagsArr.push(i);
+  //   }
+  //   return pagsArr.map( pag => <span onClick={()=>props.changePage(pag)} key={pag} className={props.page === pag ? cls.currPage : undefined}>{pag}</span> );
+  // }
 
   function buildUsers() {
     return props.usersArr.map( (user) => <User
@@ -39,7 +40,12 @@ function FindUsers(props) {
         </div>
         <div className={cls.pagin}>
           <div className={cls.pagInner}>
-            { buildPag() }
+            <Paginator
+            totalItems={props.totalItems}
+            count={props.count}
+            page={props.page}
+            changePage={props.changePage}
+            />
           </div>
         </div>
         <div className={cls.moreButton}>

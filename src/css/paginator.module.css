@@ -1,0 +1,27 @@
+.pagItem {
+  display: inline-block;
+  width: 20px;
+  font-size: 12px;
+  text-align: center;
+  padding: 0 5px;
+  border-right: 2px solid black;
+  cursor: pointer;
+}
+
+.pagItem:nth-last-child(3) {
+  border: none;
+}
+
+.currPage {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.arrows {
+  padding: 0 5px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  vertical-align: -3px;
+  color: green;
+}

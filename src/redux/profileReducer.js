@@ -3,6 +3,7 @@ import {requestAPI} from '../api/api';
 const ADD_WALL_POST = 'ADD_WALL_POST';
 const SET_PROFILE = 'setCurrnetProfileOnPageByLink';
 const SET_STATUS = 'setCurrentUserStatus';
+const SET_AVATAR = 'setPhotoObjectToStateFromServer';
 
 let defaultData = {
   postData: [
@@ -33,6 +34,9 @@ function profileReducer(partData = defaultData, action) {
     case SET_STATUS:
       dataCopy.status = action.status;
       break;
+    case SET_AVATAR:
+      dataCopy.currentProfile.photos = action.photos;
+      break;
     default:
       return partData;
   }
@@ -43,6 +47,7 @@ function profileReducer(partData = defaultData, action) {
 export let addWallPost = (postText) => ({type: ADD_WALL_POST, postText});
 export let writeProfile = (profile) => ({type: SET_PROFILE, profile});
 export let setStatus = (status) => ({type: SET_STATUS, status});
+export let setAvatar = (photos) => ({type: SET_AVATAR, photos});
 // export let changePostText = (text) => ({type: CHG_POST_TEXT, text});
 
 //Thunks
@@ -65,6 +70,15 @@ export function updateUserStatus(status) {
     let response = await requestAPI.updateStatus(status);
     if (response.data.resultCode === 0) {
       dispatch(setStatus(status));
+    }
+  }
+}
+
+export function changeAvatar(file) {
+  return async (dispatch) => {
+    let response = await requestAPI.uploadAvatar(file);
+    if (response.resultCode === 0) {
+      dispatch(setAvatar(response.data.photos));
     }
   }
 }

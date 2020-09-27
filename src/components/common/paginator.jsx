@@ -12,7 +12,6 @@ function Pagination(props) {
   }
 
   let potionCount = Math.ceil(numPags / 10) - 1;
-  console.log(potionCount);
 
   let potionArr = [];
   let innerArr = [];
@@ -23,8 +22,6 @@ function Pagination(props) {
       innerArr = [];
     }
   }
-
-  console.log(potionArr);
 
 
   return (

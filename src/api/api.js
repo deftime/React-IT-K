@@ -45,6 +45,13 @@ class SamuraiAPI {
   updateStatus(status) {
     return this.global.put(`/profile/status`, {status})
   }
+  uploadAvatar(file) {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    return this.global.put('/profile/photo', formData)
+    .then(response => response.data)
+  }
 }
 
 export const requestAPI = new SamuraiAPI();

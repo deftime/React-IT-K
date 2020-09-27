@@ -16,11 +16,20 @@ function ProfileInfo(props) {
     return iconArr;
   }
 
+  function photoSelected(event) {
+    props.changeAvatar(event.target.files[0]);
+  }
+
   return (
     <div>
       <div className={`${cls.userCover} ${cls.mainRow}`}></div>
       <div className={`${cls.userData} ${cls.mainRow}`}>
-        <div className={cls.userAva} style={props.photo ? {backgroundImage: `url(${props.photo})`} : undefined}></div>
+        <div className={cls.userAva} style={props.photo ? {backgroundImage: `url(${props.photo})`} : undefined}>
+          {props.isOwner
+            ? <div className={cls.changeAva}><label for="chgAva" className={cls.changeAvaButt}>Change...<input id="chgAva" type="file" onChange={photoSelected} /></label></div>
+            : undefined
+          }
+        </div>
         <div className={cls.userDetails}>
           <div className={cls.name}>
             <span>{props.name}</span><br />

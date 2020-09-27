@@ -22,6 +22,8 @@ function Profile(props) {
         jobDesc={props.profile.lookingForAJobDescription}
         photo={props.profile.photos.large}
         contacts={props.profile.contacts}
+        isOwner={props.isOwner}
+        changeAvatar={props.changeAvatar}
       />
       <div className={`${cls.myPosts} ${cls.mainRow}`}>
       <MyPostsContainer />

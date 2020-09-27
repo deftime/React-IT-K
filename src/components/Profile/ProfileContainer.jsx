@@ -3,14 +3,14 @@ import {withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import Profile from './Profile';
-import {setProfile, setUserStatus, updateUserStatus} from '../../redux/profileReducer';
+import {setProfile, setUserStatus, updateUserStatus, changeAvatar} from '../../redux/profileReducer';
 import withAuth from '../../hocs/withAuth';
 import {selectProfile, selectStatus} from '../../redux/selectors/reselectors';
 
 
 class ProfileClass extends React.Component {
 
-  componentDidMount() {
+  refreshStatus() {
     let userId;
     if (this.props.match.params.userId) {
       userId = this.props.match.params.userId;
@@ -19,22 +19,27 @@ class ProfileClass extends React.Component {
     }
     this.props.setProfile(userId);
     this.props.setUserStatus(userId);
+  }
 
-    // let userId = this.props.match.params.userId;
-    // requestAPI.getProfile(userId)
-    // .then(data => {
-    //   this.props.setProfile(data);
-    // })
+  componentDidMount() {
+    this.refreshStatus();
+  }
 
-    // axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId ? userId : 2}`)
-    //   .then(response => {
-    //     this.props.setProfile(response.data);
-    //   })
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.userId != prevProps.match.params.userId) {
+      this.refreshStatus();
+    }
   }
 
   render() {
     return (
-      <Profile profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateUserStatus}/>
+      <Profile
+        profile={this.props.profile}
+        status={this.props.status}
+        updateStatus={this.props.updateUserStatus}
+        isOwner={!this.props.match.params.userId}
+        changeAvatar={this.props.changeAvatar}
+      />
     )
   }
 }
@@ -48,7 +53,7 @@ function setStateToProps(data) {
 
 
 export default compose(
-  connect(setStateToProps, {setProfile, setUserStatus, updateUserStatus}),
+  connect(setStateToProps, {setProfile, setUserStatus, updateUserStatus, changeAvatar}),
   withRouter,
   withAuth
 )(ProfileClass);

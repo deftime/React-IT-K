@@ -83,4 +83,13 @@ export function changeAvatar(file) {
   }
 }
 
+export function updateProfile(profile) {
+  return async (dispatch) => {
+    let response = await requestAPI.updateProfile(profile);
+    if (response.data.resultCode === 0) {
+      dispatch(setProfile(profile.userId));
+    }
+  }
+}
+
 export default profileReducer;

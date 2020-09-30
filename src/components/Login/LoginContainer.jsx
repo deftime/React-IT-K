@@ -7,18 +7,6 @@ import {errorMessageSelector, checkAuthSelector} from '../../redux/selectors/res
 
 class LoginClass extends React.Component {
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.isAuth !== this.props.isAuth) {
-  //     this.setState({
-  //       isLogin: true
-  //     })
-  //   }
-  // }
-  //
-  // state = {
-  //   isLogin: false
-  // }
-
   render() {
     if (this.props.isAuth) {
       return <Redirect to='/profile' />

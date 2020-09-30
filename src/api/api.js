@@ -52,6 +52,9 @@ class SamuraiAPI {
     return this.global.put('/profile/photo', formData)
     .then(response => response.data)
   }
+  updateProfile(profileObject) {
+    return this.global.put(`/profile`, profileObject)
+  }
 }
 
 export const requestAPI = new SamuraiAPI();

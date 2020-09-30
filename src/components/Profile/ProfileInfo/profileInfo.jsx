@@ -8,7 +8,7 @@ function ProfileInfo(props) {
     let iconArr = [];
     for (let key in props.contacts) {
       if (props.contacts[key]) {
-        iconArr.push(<a href={props.contacts[key]} className={cls[key]}></a>);
+        iconArr.push(<a key={key} href={props.contacts[key]} className={cls[key]}></a>);
       } else {
         continue;
       }
@@ -26,24 +26,26 @@ function ProfileInfo(props) {
       <div className={`${cls.userData} ${cls.mainRow}`}>
         <div className={cls.userAva} style={props.photo ? {backgroundImage: `url(${props.photo})`} : undefined}>
           {props.isOwner
-            ? <div className={cls.changeAva}><label for="chgAva" className={cls.changeAvaButt}>Change...<input id="chgAva" type="file" onChange={photoSelected} /></label></div>
+            ? <div className={cls.changeAva}><label htmlFor="chgAva" className={cls.changeAvaButt}>Change...<input id="chgAva" type="file" onChange={photoSelected} /></label></div>
             : undefined
           }
         </div>
         <div className={cls.userDetails}>
           <div className={cls.name}>
-            <span>{props.name}</span><br />
+            <span>{props.name}</span>{props.isOwner ? <button onClick={props.editMode}>Edit Profile</button> : undefined}<br />
             <Status status={props.status} updateStatus={props.updateStatus} />
           </div>
           <div className={cls.links}>
             {buildIcons()}
           </div>
           <div className={cls.job}>
-            <span>{props.job ? 'Looking for job!' : 'Now working or dont need a job...'}</span>
+            {props.job
+              ? <span className={cls.looking} style={{backgroundColor: 'green'}}>Looking for job</span>
+              : <span className={cls.looking} style={{backgroundColor: 'red'}}>NOT looking for job</span>}
             <div className={cls.jobDesc}>
               {props.jobDesc}
             </div>
-            <span className={cls.job}>{props.about ? 'About Me:' : ''}</span>
+            <span className={cls.aboutMe}>{props.about ? 'About Me:' : ''}</span>
             <div>
               {props.about}
             </div>

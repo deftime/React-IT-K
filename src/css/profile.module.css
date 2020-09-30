@@ -72,13 +72,37 @@
   margin-bottom: 10px;
 }
 
-.main .userDetails .job span {
-  text-decoration: underline;
+.main .job .looking {
+  display: inline-block;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.main .aboutMe {
+  font-weight: bold;
 }
 
 .main .userDetails .name span {
   font-size: 12px;
   font-style: italic;
+}
+
+.main .userDetails .name button {
+  background-color: #69a7ea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin-left: 20px;
+  vertical-align: top;
+}
+
+.main .userDetails .name button:active {
+  transform: scale(0.9);
 }
 
 .main .userDetails .name span:nth-child(1) {
@@ -195,4 +219,59 @@
 
 .links .website {
   background-position: 100px 50px;
+}
+
+/* Profile Edit Mode */
+
+.editModeForm #inpName {
+  margin: 0 0 20px 15px;
+  border: none;
+  border-bottom: 2px solid #69a7ea;
+  width: 250px;
+  padding: 5px 10px;
+}
+
+.editModeForm label {
+  font-weight: bold;
+}
+
+.editModeForm textarea {
+  border: none;
+  border-radius: 5px;
+  background-color: #e0efff;
+  padding: 10px 10px;
+  width: 500px;
+  height: 100px;
+  margin: 0 0 20px 0;
+}
+
+.contactWrapper {
+  display: flex;
+  margin-top: 10px;
+}
+
+.contactWrapper .contactLabels {
+  width: 150px;
+}
+
+.contactWrapper .contactLabels label {
+  margin-bottom: 2px;
+  display: inline-block;
+}
+
+.contactWrapper .contactFields input {
+  width: 500px;
+}
+
+.editModeForm button {
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: #a5dc69;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.editModeForm button:active {
+  transform: scale(0.9);
 }

@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import Profile from './Profile';
-import {setProfile, setUserStatus, updateUserStatus, changeAvatar} from '../../redux/profileReducer';
+import {setProfile, setUserStatus, updateUserStatus, changeAvatar, updateProfile} from '../../redux/profileReducer';
 import withAuth from '../../hocs/withAuth';
 import {selectProfile, selectStatus} from '../../redux/selectors/reselectors';
 
@@ -39,6 +39,7 @@ class ProfileClass extends React.Component {
         updateStatus={this.props.updateUserStatus}
         isOwner={!this.props.match.params.userId}
         changeAvatar={this.props.changeAvatar}
+        updateProfile={this.props.updateProfile}
       />
     )
   }
@@ -53,7 +54,7 @@ function setStateToProps(data) {
 
 
 export default compose(
-  connect(setStateToProps, {setProfile, setUserStatus, updateUserStatus, changeAvatar}),
+  connect(setStateToProps, {setProfile, setUserStatus, updateUserStatus, changeAvatar, updateProfile}),
   withRouter,
   withAuth
 )(ProfileClass);

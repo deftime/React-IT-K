@@ -15,8 +15,11 @@ function Profile(props) {
   }
 
   function updateProfile(formData) {
-    props.updateProfile(formData);
-    setMode(false);
+    props.updateProfile(formData).then(()=>{
+      setMode(false);
+    }).catch(()=>{
+      console.log('FORM ERROR!');
+    })
   }
 
   return (

@@ -1,4 +1,5 @@
 import {requestAPI} from '../api/api';
+import {stopSubmit} from 'redux-form';
 
 const ADD_WALL_POST = 'ADD_WALL_POST';
 const SET_PROFILE = 'setCurrnetProfileOnPageByLink';
@@ -88,6 +89,9 @@ export function updateProfile(profile) {
     let response = await requestAPI.updateProfile(profile);
     if (response.data.resultCode === 0) {
       dispatch(setProfile(profile.userId));
+    } else {
+      dispatch(stopSubmit('editProfile', {_error: response.data.messages[0]}));
+      return Promise.reject();
     }
   }
 }

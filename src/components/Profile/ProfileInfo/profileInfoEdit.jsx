@@ -12,7 +12,7 @@ function ProfileEdit(props) {
   // }, [props.name])
 
   function buildSocialFields() {
-    return Object.keys(props.contacts).map(key => <><Field key={key} component={input} type="text" name={`contacts.${key}`} /><br /></>)
+    return Object.keys(props.contacts).map((field, i) => <span key={i}><Field component={input} type="text" name={`contacts.${field}`} /><br /></span>)
   }
 
   return (
@@ -42,7 +42,7 @@ function ProfileEdit(props) {
             {buildSocialFields()}
           </div>
         </div>
-        <button>SAVE</button>
+        <button>SAVE</button><div onClick={props.editMode} className={cls.exitButt}>X</div>{props.error ? <span style={{marginLeft: '10px', color: 'red'}}>{props.error}</span> : undefined}
       </form>
     </div>
   )

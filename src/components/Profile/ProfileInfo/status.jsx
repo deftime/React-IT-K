@@ -18,9 +18,9 @@ function Status(props) {
     }
   }
 
-  let write = (event) => {
-    setStatus(event.target.value);
-  }
+  // let write = (event) => {
+  //   setStatus(event.target.value);
+  // }
 
   // componentDidUpdate(prevProps, prevState) {
   //   if (prevProps.status != this.props.status) {

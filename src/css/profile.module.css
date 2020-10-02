@@ -275,3 +275,13 @@
 .editModeForm button:active {
   transform: scale(0.9);
 }
+
+.editModeForm .exitButt {
+  display: inline-block;
+  color: white;
+  background-color: red;
+  padding: 7px 15px;
+  margin-left: 10px;
+  vertical-align: bottom;
+  cursor: default;
+}

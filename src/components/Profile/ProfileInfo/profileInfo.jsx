@@ -8,7 +8,7 @@ function ProfileInfo(props) {
     let iconArr = [];
     for (let key in props.contacts) {
       if (props.contacts[key]) {
-        iconArr.push(<a key={key} href={props.contacts[key]} className={cls[key]}></a>);
+        iconArr.push(<a key={key} href={props.contacts[key]} className={cls[key]}> </a>);
       } else {
         continue;
       }
